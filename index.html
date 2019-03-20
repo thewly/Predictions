@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Twitterpated</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <style>
+        /* There were limited styles applied so I left them internal, forgive me */
+        .doesThisWork {
+            background-color: blue;
+        }
+        .dat-background-tho {
+            background-image: url("assets/images/bg.jpg");
+            background-repeat: repeat;
+            background-color: blueviolet;
+        }
+        .breathing-room {
+            margin-bottom: 2rem;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+
+<body class="dat-background-tho">
+    <img src="assets/images/banner_lg.jpg" class="img-fluid" alt="Responsive image">
+    <!-- <div class="jumbotron">
+        <h1 class="display-4">DFW Train Scheduler</h1>
+        <p class="lead">I take the train to work. These are my trains. Feel free to enter your own!</p>
+        <hr class="my-4">
+        <p>If you want to look up your train & add to the cheduler, feel free to check out other local routes &
+            schedules:</p>
+        <p class="lead">
+            <a class="btn btn-outline-success btn-sm" href="https://www.dart.org/riding/dartrailgreenline.asp"
+                role="button">DART Green Line</a>
+
+            <a class="btn btn-outline-success btn-sm" href="https://www.dcta.net/schedules-maps/bus-service-schedules"
+                role="button">DCTA A-Train</a>
+
+            <a class="btn btn-outline-success btn-sm" href="https://www.dart.org/schedules/schedules.asp"
+                role="button">Additional DART & TRE Schedules</a>
+        </p>
+    </div> -->
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <!-- <h1 class="display-4">Train Scheduler</h1> -->
+            <p class="lead text-center">Here's the deal: Jacob & Sam be getting serious with these ladies. Register your guesses for their engagement/married dates here.</p>
+            <hr class="my-4 text-center">
+            <p class="lead text-center">Betting stakes will go here.</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card breathing-room">
+                    <div class="card-body">
+                            <h4 class="text-center">Jacob Speculation</h4>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Submission date</th>
+                                    <th scope="col">Engaged</th>
+                                    <th scope="col">Married</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card breathing-room">
+                        <div class="card-body">
+                            <h4 class="text-center">Sam Speculation</h4>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Submission date</th>
+                                        <th scope="col">Engaged</th>
+                                        <th scope="col">Married</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card breathing-room">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+
+                                <label class="mr-sm-2" for="inlineFormCustomSelect">Who are we talking about?</label>
+                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                    <option selected>Choose...</option>
+                                    <option value="1">Jacob</option>
+                                    <option value="2">Sam</option>
+                                </select>
+                            </div>    
+                            <div class="form-group">
+                                <label for="nameInput">Your Name</label>
+                                <input type="text" class="form-control" id="trainName" aria-describedby="emailHelp"
+                                    placeholder="Meddling aquaintance">
+                            </div>
+                            <div class="form-group">
+                                <label for="roleInput">When will they propose?</label>
+                                <input type="text" class="form-control" id="destination" aria-describedby="emailHelp"
+                                    placeholder="MM/DD/YY">
+                            </div>
+                            <div class="form-group">
+                                <label for="emailInput">When will they marry?</label>
+                                <input type="text" class="form-control" id="firstTrain" aria-describedby="emailHelp"
+                                    placeholder="MM/DD/YY">
+                            </div>
+                            <!-- <div class="form-group">
+                                <label for="rateInput">How sure are you?</label>
+                                <input type="text" class="form-control" id="frequency" aria-describedby="emailHelp"
+                                    placeholder="15">
+                            </div> -->
+                            <button type="submit" id="submitButton" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
+        <script src="assets/javascript/app.js"></script>
+</body>
+
+</html>
