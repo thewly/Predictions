@@ -10,63 +10,65 @@
   firebase.initializeApp(config);
   
   var database = firebase.database();
-  var employeeList = database.ref('/employee');
+  var guesserList = database.ref('/guesser');
   
   var name = "";
-  var destination = "";
-  var frequency = "";
-  var firstTrain = "";
-  
-  employeeList.on('child_added', function(snap){
-    
-    var nextArrival = 0;
-    var minutesAway = 0;
-    var firstTrain = snap.val().firstTrain;
-    var frequency = snap.val().frequency;
-    var currentTime = moment().format('HH:MM');
-    var firstTimeConverted = moment(firstTrain, "HH:mm").subtract(1, "years");
-    console.log(firstTimeConverted);
-    
-    var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-    console.log("DIFFERENCE IN TIME: " + diffTime);
+  var propDate = "MM/DD/YY";
+  var marryDate = "MM/DD/YY";
+  var betting = true;
+  var nameValue = $("#inlineFormCustomSelect").val();
+  var brother = $("#inlineFormCustomSelect").val();
+  var todayDate = new Date();
 
-    var tRemainder = diffTime % frequency;
-    console.log(tRemainder);
+  // ("0" + (this.getMonth() + 1)).slice(-2)
+  var today = ("0" + (todayDate.getMonth() + 1)).slice(-2) + "/" + ("0" + (todayDate.getDay())).slice(-2) + "/" + (todayDate.getFullYear().toString().slice(2));
+  guesserList.on('child_added', function(snap){
 
-    var tMinutesTillTrain = frequency - tRemainder;
-    console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
-
-    var nextTrain = moment().add(tMinutesTillTrain, "minutes").format("hh:mm");
-    console.log("ARRIVAL TIME: " + moment(nextTrain).format("HH:MM"));
-
-    $('tbody').append(`
+    $(`#${snap.val().brother.toLowerCase()}Table`).append(`
     <tr>
     <td>${snap.val().name}</td>
-    <td>${snap.val().destination}</td>
-    <td>${snap.val().frequency}</td>
-    <td>${nextTrain}</td>
-    <td>${tMinutesTillTrain}</td>
+    <td>${snap.val().today}</td>
+    <td>${snap.val().propDate}</td>
+    <td>${snap.val().marryDate}</td>
+    <td>${snap.val().betting}</td>
     </tr>
     `)
+    
   })
   
-  $("#submitButton").on("click", function() {
-    event.preventDefault();
-
-      var newRow = $("<div>");
+  function sendToServer() {
+    var newRow = $("<div>");
       newRow.addClass("doesThisWork");
       newRow.append("<div class='row'>");
-    
-      name = $("#trainName").val().trim();
-      destination = $("#destination").val().trim();
-      frequency = $("#frequency").val().trim();
-      firstTrain = $("#firstTrain").val().trim();
 
-      database.ref("/employee").push({
+      brother = $("#inlineFormCustomSelect").val();
+      name = $("#yourName").val().trim();
+      propDate = $("#propDate").val().trim();
+      marryDate = $("#marryDate").val().trim();
+      betting = $("#betting").is(":checked");
+      console.log(betting);
+
+      database.ref("/guesser").push({
+        today: today,
+        brother: brother,
         name: name,
-        destination: destination,
-        frequency: frequency,
-        firstTrain: firstTrain
-
+        propDate: propDate,
+        marryDate: marryDate,
+        betting: betting ? "Yes" : "No"
       })
+  }
+
+  $("#submitButton").on("click", function() {
+    event.preventDefault();
+    
+    nameValue = $("#inlineFormCustomSelect").val();
+    console.log(nameValue);
+
+    if (nameValue === "Jacob") {
+      sendToServer();
+    } else if (nameValue === "Sam") {
+      sendToServer();
+    } else {
+      alert("wrong");
+    };
     });

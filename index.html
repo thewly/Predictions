@@ -15,41 +15,42 @@
         .doesThisWork {
             background-color: blue;
         }
+
         .dat-background-tho {
-            background-image: url("assets/images/bg.jpg");
+            background-image: url("assets/images/bg-sm.jpg");
             background-repeat: repeat;
             background-color: blueviolet;
+            height: 3rem;
         }
+
         .breathing-room {
             margin-bottom: 2rem;
             margin-bottom: 2rem;
+        }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
         }
     </style>
 </head>
 
 <body class="dat-background-tho">
     <img src="assets/images/banner_lg.jpg" class="img-fluid" alt="Responsive image">
-    <!-- <div class="jumbotron">
-        <h1 class="display-4">DFW Train Scheduler</h1>
-        <p class="lead">I take the train to work. These are my trains. Feel free to enter your own!</p>
-        <hr class="my-4">
-        <p>If you want to look up your train & add to the cheduler, feel free to check out other local routes &
-            schedules:</p>
-        <p class="lead">
-            <a class="btn btn-outline-success btn-sm" href="https://www.dart.org/riding/dartrailgreenline.asp"
-                role="button">DART Green Line</a>
-
-            <a class="btn btn-outline-success btn-sm" href="https://www.dcta.net/schedules-maps/bus-service-schedules"
-                role="button">DCTA A-Train</a>
-
-            <a class="btn btn-outline-success btn-sm" href="https://www.dart.org/schedules/schedules.asp"
-                role="button">Additional DART & TRE Schedules</a>
-        </p>
-    </div> -->
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron jumbotron-fluid bg-dark text-white">
         <div class="container">
             <!-- <h1 class="display-4">Train Scheduler</h1> -->
-            <p class="lead text-center">Here's the deal: Jacob & Sam be getting serious with these ladies. Register your guesses for their engagement/married dates here.</p>
+            <p class="lead text-center">Here's the deal: Jacob & Sam be getting serious with these ladies. Register your
+                guesses for their engagement/married dates here.</p>
             <hr class="my-4 text-center">
             <p class="lead text-center">Betting stakes will go here.</p>
         </div>
@@ -59,7 +60,7 @@
             <div class="col-md-8">
                 <div class="card breathing-room">
                     <div class="card-body">
-                            <h4 class="text-center">Jacob Speculation</h4>
+                        <h4 class="text-center">Jacob Speculation</h4>
                         <table class="table">
                             <thead>
                                 <tr>
@@ -67,28 +68,30 @@
                                     <th scope="col">Submission date</th>
                                     <th scope="col">Engaged</th>
                                     <th scope="col">Married</th>
+                                    <th scope="col">Bet</th>
                                 </tr>
                             </thead>
-                            <tbody></tbody>
+                            <tbody id="jacobTable"></tbody>
                         </table>
                     </div>
                 </div>
                 <div class="card breathing-room">
-                        <div class="card-body">
-                            <h4 class="text-center">Sam Speculation</h4>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Submission date</th>
-                                        <th scope="col">Engaged</th>
-                                        <th scope="col">Married</th>
-                                    </tr>
-                                </thead>
-                                <tbody></tbody>
-                            </table>
-                        </div>
+                    <div class="card-body">
+                        <h4 class="text-center">Sam Speculation</h4>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Submission date</th>
+                                    <th scope="col">Engaged</th>
+                                    <th scope="col">Married</th>
+                                    <th scope="col">Bet</th>
+                                </tr>
+                            </thead>
+                            <tbody id="samTable"></tbody>
+                        </table>
                     </div>
+                </div>
             </div>
             <div class="col-md-4">
                 <div class="card breathing-room">
@@ -99,40 +102,57 @@
                                 <label class="mr-sm-2" for="inlineFormCustomSelect">Who are we talking about?</label>
                                 <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                                     <option selected>Choose...</option>
-                                    <option value="1">Jacob</option>
-                                    <option value="2">Sam</option>
+                                    <option value="Jacob">Jacob</option>
+                                    <option value="Sam">Sam</option>
                                 </select>
-                            </div>    
+                            </div>
                             <div class="form-group">
                                 <label for="nameInput">Your Name</label>
-                                <input type="text" class="form-control" id="trainName" aria-describedby="emailHelp"
+                                <input type="text" class="form-control" id="yourName" aria-describedby="emailHelp"
                                     placeholder="Meddling aquaintance">
                             </div>
                             <div class="form-group">
                                 <label for="roleInput">When will they propose?</label>
-                                <input type="text" class="form-control" id="destination" aria-describedby="emailHelp"
+                                <input type="text" class="form-control" id="propDate" aria-describedby="emailHelp"
                                     placeholder="MM/DD/YY">
                             </div>
                             <div class="form-group">
                                 <label for="emailInput">When will they marry?</label>
-                                <input type="text" class="form-control" id="firstTrain" aria-describedby="emailHelp"
+                                <input type="text" class="form-control" id="marryDate" aria-describedby="emailHelp"
                                     placeholder="MM/DD/YY">
                             </div>
-                            <!-- <div class="form-group">
-                                <label for="rateInput">How sure are you?</label>
-                                <input type="text" class="form-control" id="frequency" aria-describedby="emailHelp"
-                                    placeholder="15">
-                            </div> -->
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="betting">
+                                    <label class="form-check-label" for="gridCheck1">
+                                        Do you want in on bets?
+                                    </label>
+                                </div>
+                            </div>
                             <button type="submit" id="submitButton" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
-        <script src="assets/javascript/app.js"></script>
+        <div class="row">
+            <div class="card col-md-12 breathing-room" style='height: 35vh;'>
+                <div id='message-box' class="messages" style='height: 90%; overflow-y: scroll;'>
+                </div>
+            </div>
+            <form class="input-group mb-3">
+                <input id='input-message' type="text" class="form-control" placeholder="" autocomplete="off"
+                    aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button id='submit-message' class="btn btn-outline-secondary" type="submit">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
+    <script src="assets/javascript/app.js"></script>
 </body>
 
 </html>
