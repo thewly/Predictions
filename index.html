@@ -27,20 +27,6 @@
             margin-bottom: 2rem;
             margin-bottom: 2rem;
         }
-
-        ::-webkit-scrollbar {
-            width: 12px;
-        }
-
-        ::-webkit-scrollbar-track {
-            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            border-radius: 10px;
-            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
-        }
     </style>
 </head>
 
@@ -48,15 +34,60 @@
     <img src="assets/images/banner_lg.jpg" class="img-fluid" alt="Responsive image">
     <div class="jumbotron jumbotron-fluid bg-dark text-white">
         <div class="container">
-            <!-- <h1 class="display-4">Train Scheduler</h1> -->
-            <p class="lead text-center">Here's the deal: Jacob & Sam be getting serious with these ladies. Register your
-                guesses for their engagement/married dates here.</p>
+            <h3 class="text-center">The First Rule About This Site Is: &nbsp; <b>Don't Tell Them!</b> </br> The Second
+                Rule Is: &nbsp; <b>Send It To Anyone Who Knows Them.</b></h3>
             <hr class="my-4 text-center">
-            <p class="lead text-center">Betting stakes will go here.</p>
+            <p class="lead text-center"><b>HERE'S THE DEAL:</b> Jacob & Sam are getting serious with these ladies. This
+                site was built to create a lasting record of our thoughtful, intrusive, coordinated conjecture. Fill out
+                the form below to register your guess. Betting information is at the bottom of the page.</p>
+
         </div>
     </div>
     <div class="container">
         <div class="row">
+            <div class="col-md-4">
+                <div class="card breathing-room">
+                    <div class="card-body">
+                        <form>
+                            <h2 class="text-center">Speculate about their futures here:</h2>
+                            <div class="form-group">
+
+                                <label class="mr-sm-2" for="inlineFormCustomSelect">Which ginger are we talking
+                                    about?</label>
+                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                    <option selected>Choose...</option>
+                                    <option value="Jacob">Jacob</option>
+                                    <option value="Sam">Sam</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="nameInput">Your Name</label>
+                                <input type="text" class="form-control" id="yourName" aria-describedby="emailHelp"
+                                    placeholder="Meddling aquaintance">
+                            </div>
+                            <div class="form-group">
+                                <label for="roleInput">When will they propose?</label>
+                                <input type="text" class="form-control" id="propDate" aria-describedby="emailHelp"
+                                    placeholder="MM/DD/YY">
+                            </div>
+                            <div class="form-group">
+                                <label for="emailInput">When will they marry?</label>
+                                <input type="text" class="form-control" id="marryDate" aria-describedby="emailHelp"
+                                    placeholder="MM/DD/YY">
+                            </div>
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="betting">
+                                    <label class="form-check-label" for="gridCheck1">
+                                        Do you want in on bets?
+                                    </label>
+                                </div>
+                            </div>
+                            <button type="submit" id="submitButton" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <div class="col-md-8">
                 <div class="card breathing-room">
                     <div class="card-body">
@@ -93,60 +124,57 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+        </div>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid bg-dark text-white">
+        <div class="container">
+            <!-- <h1 class="display-4">Train Scheduler</h1> -->
+            <!-- <p class="lead text-center"></p>
+            <hr class="my-4 text-center"> -->
+            <h5 class="text-center">Bets: </h5>
+            <p class="lead text-center">I was thinking that it would be cash, to be used on pizza when family is
+                together in 2020 sometime ('cause let's face it, there will be rings on fingers by then).
+                <b>PER DATE GUESSED:</b> if your guess is between 2-4 weeks off a date, in either
+                direction, you pitch in $3 for pizza. If your guess is more than 4 weeks off, that's $5. For example, if
+                you bet on all 4 dates & you're waaaay off on all 4, you're only out $20. <b>HOWEVER,</b> if your guess
+                is within 2 weeks of actual proposal/marriage, for either person, you don't have to pay anything, because you're amazing.
+            </p>
+            <hr class="my-4 text-center">
+            <p class="lead text-center">If
+                you get intel from someone getting married in this list <i>then</i> file you're bet, & we find out, you
+                have to pitch in $50. No insider trading.</p>
+                <hr class="my-4 text-center">
+                <h3 class="text-center">Leave a comment below:</h3>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
                 <div class="card breathing-room">
                     <div class="card-body">
-                        <form>
-                            <div class="form-group">
+                        <div class="form-group">
+                            <!-- <label for="exampleFormControlTextarea1">Comment</label> -->
+                            <textarea class="form-control" id="commentArea" rows="3"
+                                placeholder="Name: Your Comment"></textarea>
+                            </br>
+                            <button type="submit" id="commentSubmit" class="btn btn-primary">Submit</button>
+                        </div>
+                        </br>
 
-                                <label class="mr-sm-2" for="inlineFormCustomSelect">Who are we talking about?</label>
-                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                    <option selected>Choose...</option>
-                                    <option value="Jacob">Jacob</option>
-                                    <option value="Sam">Sam</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="nameInput">Your Name</label>
-                                <input type="text" class="form-control" id="yourName" aria-describedby="emailHelp"
-                                    placeholder="Meddling aquaintance">
-                            </div>
-                            <div class="form-group">
-                                <label for="roleInput">When will they propose?</label>
-                                <input type="text" class="form-control" id="propDate" aria-describedby="emailHelp"
-                                    placeholder="MM/DD/YY">
-                            </div>
-                            <div class="form-group">
-                                <label for="emailInput">When will they marry?</label>
-                                <input type="text" class="form-control" id="marryDate" aria-describedby="emailHelp"
-                                    placeholder="MM/DD/YY">
-                            </div>
-                            <div class="form-group">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="betting">
-                                    <label class="form-check-label" for="gridCheck1">
-                                        Do you want in on bets?
-                                    </label>
-                                </div>
-                            </div>
-                            <button type="submit" id="submitButton" class="btn btn-primary">Submit</button>
-                        </form>
+                            <table>
+                                <thead>
+                                <h4>What people are saying:</h4>
+                                    <hr>
+                                    <tbody class="commentInput">
+                                    
+                                </tbody>
+                                </thead>
+                            </table>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="card col-md-12 breathing-room" style='height: 35vh;'>
-                <div id='message-box' class="messages" style='height: 90%; overflow-y: scroll;'>
-                </div>
-            </div>
-            <form class="input-group mb-3">
-                <input id='input-message' type="text" class="form-control" placeholder="" autocomplete="off"
-                    aria-label="Recipient's username" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                    <button id='submit-message' class="btn btn-outline-secondary" type="submit">Send</button>
-                </div>
-            </form>
         </div>
     </div>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

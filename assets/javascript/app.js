@@ -11,6 +11,7 @@
   
   var database = firebase.database();
   var guesserList = database.ref('/guesser');
+  var commentList = database.ref('/comments');
   
   var name = "";
   var propDate = "MM/DD/YY";
@@ -19,9 +20,19 @@
   var nameValue = $("#inlineFormCustomSelect").val();
   var brother = $("#inlineFormCustomSelect").val();
   var todayDate = new Date();
-
+  var comment = "";
+// ("0" + (todayDate.getDay())).slice(-2)
   // ("0" + (this.getMonth() + 1)).slice(-2)
-  var today = ("0" + (todayDate.getMonth() + 1)).slice(-2) + "/" + ("0" + (todayDate.getDay())).slice(-2) + "/" + (todayDate.getFullYear().toString().slice(2));
+  var today = ("0" + (todayDate.getMonth() + 1)).slice(-2) + "/" + moment().format("DD") + "/" + (todayDate.getFullYear().toString().slice(2));
+  
+  commentList.on('child_added', function(snap){
+    $(`.commentInput`).append(`
+    <tr>
+    <td>${snap.val().comment}</td>
+    </tr>
+    `)
+  })
+  
   guesserList.on('child_added', function(snap){
 
     $(`#${snap.val().brother.toLowerCase()}Table`).append(`
@@ -57,6 +68,21 @@
         betting: betting ? "Yes" : "No"
       })
   }
+  
+  $("#commentSubmit").on("click", function() {
+    event.preventDefault();
+    
+    var newRow = $("<div>");
+      newRow.addClass("doesThisWork");
+      newRow.append("<div class='row'>");
+  
+      comment = $("#commentArea").val();
+      console.log(comment);
+  
+      database.ref("/comments").push({
+        comment: comment
+      })
+  })
 
   $("#submitButton").on("click", function() {
     event.preventDefault();
